@@ -22,6 +22,10 @@ sudo adduser $name
 doLongsleepScripts(){
 sudo /usr/local/sbin/resize_rootfs.sh 
 
+sudo /usr/local/sbin/pine64_fixwhatever.sh
+
+sudo /usr/local/sbin/pine64_update_uboot.sh
+
 sudo /usr/local/sbin/pine64_update_kernel.sh
 }
 
