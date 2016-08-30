@@ -12,7 +12,7 @@ cd
 
 git clone https://github.com/40da63260/pine64-scripts.git
 
-sudo chown -R pine64-scripts
+sudo chmod a+x -R pine64-scripts
 
 cd pine64-scripts
 
