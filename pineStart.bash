@@ -2,7 +2,7 @@
 # 
 
 selecttime(){
-sudo timedatectl set-timezone America/Los_Angeles
+#sudo timedatectl set-timezone whatever/whatever
 }
 
 passwordNewUser(){
@@ -22,7 +22,7 @@ sudo adduser $name
 doLongsleepScripts(){
 sudo /usr/local/sbin/resize_rootfs.sh 
 
-sudo /usr/local/sbin/pine64_fixwhatever.sh
+sudo /usr/local/sbin/pine64_fix_whatever.sh
 
 sudo /usr/local/sbin/pine64_update_uboot.sh
 
