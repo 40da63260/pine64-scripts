@@ -7,24 +7,16 @@ if [ "$(id -u)" -ne "0" ]; then
 	exit 1
 fi
 
-setSudoPriv(){
-	echo "What is the name of the user you'd like to give sudo privileges?"
-	read name
-	numLine=$(sudo grep -n 'root' /etc/sudoers | grep "ALL=(" | sed -e 's/\([0-9][0-9]\).*/\1/')
-	sed -i '"$(++numLine)"\$name ALL=(ALL:ALL) ALL' /etc/sudoers
+
+
+setUpEth(){
+	echo "   hwaddress"
 }
 
-nano /etc/sudoers
-##
-#sudo nano /etc/network/interfaces.d/eth0
+setSudoPriv
 
 
 
-########################################
-##
-
-#sudo nano /etc/sudoers
-##
 #sudo nano /etc/network/interfaces.d/eth0
 
 ##auto eth0
@@ -34,13 +26,9 @@ nano /etc/sudoers
 ## netmask 255.255.255.0
 
 
-turnOffGraphics(){
-sudo systemctl stop graphical.target && sudo systemctl disable graphical.target
-
-sudo systemctl set-default multi-user.target
-}
-
-
-echo ""
-
+#turnOffGraphics(){
+#sudo systemctl stop graphical.target && sudo systemctl disable graphical.target
+#
+#sudo systemctl set-default multi-user.target
+#}
 
