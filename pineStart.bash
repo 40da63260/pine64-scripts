@@ -1,6 +1,13 @@
 #!/bin/bash
 # 
 
+set -e
+
+if [ "$(id -u)" -ne "0" ]; then
+	echo "This script requires root."
+	exit 1
+fi
+
 selectTime(){
 	
 	echo "because you didn't read the script - we are setting the time to UTC"
