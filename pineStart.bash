@@ -27,6 +27,9 @@ passwordNewUser(){
 	read name
 	adduser $name
 
+	numLine=$(sudo grep -n 'root' /etc/sudoers | grep "ALL=(" | sed -e 's/\([0-9][0-9]\).*/\1/')
+	sed -i '"$(++numLine)"\$name ALL=(ALL:ALL) ALL' /etc/sudoers
+
 }
 
 doLongsleepScripts(){

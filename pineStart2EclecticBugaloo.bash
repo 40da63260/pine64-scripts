@@ -1,7 +1,20 @@
 #!/bin/bash
 
+set -e
 
-sudo nano /etc/sudoers
+if [ "$(id -u)" -ne "0" ]; then
+	echo "This script requires root."
+	exit 1
+fi
+
+setSudoPriv(){
+	echo "What is the name of the user you'd like to give sudo privileges?"
+	read name
+	numLine=$(sudo grep -n 'root' /etc/sudoers | grep "ALL=(" | sed -e 's/\([0-9][0-9]\).*/\1/')
+	sed -i '"$(++numLine)"\$name ALL=(ALL:ALL) ALL' /etc/sudoers
+}
+
+nano /etc/sudoers
 ##
 #sudo nano /etc/network/interfaces.d/eth0
 
