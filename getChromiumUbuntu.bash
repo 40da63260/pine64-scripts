@@ -22,6 +22,7 @@ getInstallChromium(){
 	curl -o chromium.deb http://repo.linaro.org/ubuntu/linaro-overlay/pool/main/c/chromium-browser/chromium_52.0.2743.116-1~deb8u1.1_arm64.deb
 	dpkg -i chromium.deb
 	rm -f chromium.deb
+	apt-get -f install
 }
 
 aliasAndOpen(){
