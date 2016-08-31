@@ -9,7 +9,7 @@ installGraphicsStuff(){
 			sunxi-disp-tool \
 			libvdpau-sunxi1 \
 			libump \
-			libcedrus1 \
+			libcedrus1
 }
 
 installGUIStuff(){
