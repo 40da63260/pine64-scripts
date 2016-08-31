@@ -2,12 +2,15 @@
 # 
 
 selecttime(){
-#sudo timedatectl set-timezone whatever/whatever
+  echo "because you didn't read the script - we are setting the time to UTC"
+sudo timedatectl set-timezone utc
 }
 
 passwordNewUser(){
+echo "set root password"
 sudo passwd root
 
+echo "set ubuntu password"
 sudo passwd ubuntu
 
 echo "what would you like your username to be? type name -then [ENTER] - follow directions"
