@@ -22,7 +22,6 @@ passwordNewUser(){
 
 }
 
-
 doLongsleepScripts(){
 
 	/usr/local/sbin/resize_rootfs.sh 
