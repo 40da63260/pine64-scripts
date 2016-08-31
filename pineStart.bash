@@ -1,7 +1,7 @@
 #!/bin/bash
 # 
 
-selecttime(){
+selectTime(){
 	
 	echo "because you didn't read the script - we are setting the time to UTC"
 	timedatectl set-timezone utc
@@ -50,8 +50,7 @@ firstRoundInstallStuff() {
 
 }
 
-
-reboot(){
+boot(){
 	
 	sudo systemctl daemon-reload
 	sudo systemctl reboot
@@ -66,9 +65,9 @@ changeHostname(){
 		sudo sed -i 's/pine64/$host/g' /etc/hosts
 }
 
-selecttime
+selectTime
 passwordNewUser
 doLongsleepScripts
 firstRoundInstallStuff
 changeHostname
-reboot
+boot
