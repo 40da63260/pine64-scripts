@@ -2,53 +2,74 @@
 # 
 
 selecttime(){
-  echo "because you didn't read the script - we are setting the time to UTC"
-sudo timedatectl set-timezone utc
+	
+	echo "because you didn't read the script - we are setting the time to UTC"
+	timedatectl set-timezone utc
+
 }
 
 passwordNewUser(){
-echo "set root password"
-sudo passwd root
+	
+	echo "set root password"
+	passwd root
 
-echo "set ubuntu password"
-sudo passwd ubuntu
+	echo "set ubuntu password"
+	passwd ubuntu
 
-echo "what would you like your username to be? type name -then [ENTER] - follow directions"
-
-read name
-
-sudo adduser $name
+	echo "what would you like your username to be? type name -then [ENTER] - follow directions"
+	read name
+	adduser $name
 
 }
 
 
 doLongsleepScripts(){
-sudo /usr/local/sbin/resize_rootfs.sh 
 
-sudo /usr/local/sbin/pine64_fix_whatever.sh
+	/usr/local/sbin/resize_rootfs.sh 
+	/usr/local/sbin/pine64_fix_whatever.sh
+	/usr/local/sbin/pine64_update_uboot.sh
+	/usr/local/sbin/pine64_update_kernel.sh
 
-sudo /usr/local/sbin/pine64_update_uboot.sh
-
-sudo /usr/local/sbin/pine64_update_kernel.sh
 }
 
 firstRoundInstallStuff() {
-sudo apt-get update
 
-sudo apt-get install python man nano fish tmux cpufrequtils sysfsutils git wget curl iputils-ping libpam-systemd -y
+	apt-get update
+	apt-get install python \
+	man \
+	nano \
+	fish \
+	tmux \
+	cpufrequtils \
+	sysfsutils \
+	git \
+	wget \
+	curl \
+	iputils-ping \
+	libpam-systemd -yV
+	apt-get upgrade -yV
 
-sudo apt-get upgrade -y
 }
 
 
 reboot(){
-sudo systemctl daemon-reload
+	
+	sudo systemctl daemon-reload
+	sudo systemctl reboot
 
-sudo systemctl reboot
+}
+
+changeHostname(){
+
+		echo "What do you want you're new hostname to be -  <rightnow it is pine64"
+		read host
+		sudo  echo "$host" > /etc/hostname
+		sudo sed -i 's/pine64/$host/g' /etc/hosts
 }
 
 selecttime
 passwordNewUser
 doLongsleepScripts
 firstRoundInstallStuff
+changeHostname
 reboot
