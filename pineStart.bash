@@ -59,8 +59,8 @@ firstRoundInstallStuff() {
 
 boot(){
 	
-	sudo systemctl daemon-reload
-	sudo systemctl reboot
+	systemctl daemon-reload
+	systemctl reboot
 
 }
 
@@ -68,8 +68,8 @@ changeHostname(){
 
 		echo "What do you want you're new hostname to be -  <rightnow it is pine64"
 		read host
-		sudo  echo "$host" > /etc/hostname
-		sudo sed -i 's/pine64/$host/g' /etc/hosts
+		echo "$host" > /etc/hostname
+		sed -i 's/pine64/$host/g' /etc/hosts
 }
 
 selectTime
