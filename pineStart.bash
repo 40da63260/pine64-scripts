@@ -28,9 +28,11 @@ passwordNewUser(){
 	adduser $name
 
 	numLine=$(sudo grep -n 'root' /etc/sudoers | grep "ALL=(" | sed -e 's/\([0-9][0-9]\).*/\1/')
-	numline="'$numLine'r"
-	echo "$name ALL=(ALL:ALL) ALL" | sed -i '$numLine /dev/stdin' /etc/sudoers
+	##echo "$name ALL=(ALL:ALL) ALL" | sed -i '$numLine /dev/stdin' /etc/sudoers
+	awk -v n="$(++numLine)" -v s="$name ALL=(ALL:ALL) ALL" 'NR == n {print s} {print}' /etc/sudoers > /etc/sudoers.new
+	cp /etc/sudoers.new /etc/sudoers
 
+	
 }
 
 doLongsleepScripts(){
@@ -70,10 +72,10 @@ boot(){
 
 changeHostname(){
 
-		echo "What do you want you're new hostname to be -  <rightnow it is pine64"
-		read host
-		echo "$host" > /etc/hostname
-		sed -i 's/pine64/$host/g' /etc/hosts
+	echo "What do you want you're new hostname to be -  <rightnow it is pine64"
+	read host
+	echo "$host" > /etc/hostname
+	sed -i 's/pine64/$host/g' /etc/hosts
 }
 
 selectTime
