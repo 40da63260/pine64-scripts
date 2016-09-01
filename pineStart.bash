@@ -28,7 +28,6 @@ passwordNewUser(){
 	adduser $name
 
 	numLine=$(sudo grep -n 'root' /etc/sudoers | grep "ALL=(" | sed -e 's/\([0-9][0-9]\).*/\1/')
-	echo "$++numLine" >> /dev/null
 	numline="'$numLine'r"
 	echo "$name ALL=(ALL:ALL) ALL" | sed -i '$numLine /dev/stdin' /etc/sudoers
 
