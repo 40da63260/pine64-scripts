@@ -11,8 +11,6 @@ fi
 
 selectTime(){
 	
-	echo "because you didn't read the script - we are setting the time to UTC"
-	timedatectl set-timezone utc
 	dpkg-reconfigure tzdata
 
 }
@@ -30,7 +28,8 @@ passwordNewUser(){
 	adduser $name
 
 	numLine=$(sudo grep -n 'root' /etc/sudoers | grep "ALL=(" | sed -e 's/\([0-9][0-9]\).*/\1/')
-	sed -i '"$(++numLine)"\$name ALL=(ALL:ALL) ALL' /etc/sudoers
+	echo "$++numLine" >> /dev/null
+	sed -i '$numLine\$name ALL=(ALL:ALL) ALL' /etc/sudoers
 
 }
 
