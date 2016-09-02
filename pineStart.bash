@@ -42,7 +42,6 @@ doLongsleepScripts(){
 
 firstRoundInstallStuff() {
 
-	apt-get update
 	apt-get install python \
 	man \
 	nano \
@@ -66,6 +65,12 @@ boot(){
 
 }
 
+sudoWorkAround(){
+	apt-get update
+	apt-get install sudo -y
+	
+}
+
 changeHostname(){
 
 	echo "What do you want you're new hostname to be -  <rightnow it is pine64"
@@ -75,8 +80,9 @@ changeHostname(){
 }
 
 selectTime
+changeHostname
+sudoWorkAround
 passwordNewUser
 doLongsleepScripts
 firstRoundInstallStuff
-changeHostname
 boot
