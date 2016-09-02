@@ -4,7 +4,7 @@ echo "this will take a long time."
 
 installGraphicsStuff(){
 	sudo apt-get update
-	sudo apt-get -y install \
+	sudo apt-get -yV install \
 			xserver-xorg-video-fbturbo \
 			sunxi-disp-tool \
 			libvdpau-sunxi1 \
@@ -13,7 +13,7 @@ installGraphicsStuff(){
 }
 
 installGUIStuff(){
-	sudo apt-get -y install ubuntu-mate-core \
+	sudo apt-get -yV install ubuntu-mate-core \
 			ubuntu-mate-desktop \
 			ubuntu-mate-lightdm-theme \
 			ubuntu-mate-wallpapers-xenial \
